@@ -82,6 +82,9 @@ int main(void) {
      * the code is compiled. */
     rat r6 = 3 + rat(5,8);
     std::cout << "3 + 5/8 = " << r6 << std::endl;
+	
+	rat r7 = rat(1,2) - rat(5,3);
+	std::cout << "1/2 - 5/3 = " << r7 << std::endl;
     
     return 0;
 }

@@ -151,6 +151,12 @@ public:
     }
     
     /* Exercise: implement the BINARY minus */
+	/* rational - rational */
+	rational operator-(const rational& other) const {
+		rational ret = *this;
+		ret += -other;
+		return ret;
+	}
     
     /* Comparison operator between rationals */
     bool operator<(const rational& other) const {
@@ -167,8 +173,7 @@ public:
  * to compute the sum of an I on the left and a rational<I> on the
  * right. */
 template<typename I>
-rational<I>
-operator+(const I& i, const rational<I>& r)
+rational<I> operator+(const I& i, const rational<I>& r)
 {
     return r + i;
 }
@@ -177,8 +182,7 @@ operator+(const I& i, const rational<I>& r)
  * of a rational. Note how it uses the UNARY minus we implemented before
  */
 template<typename I>
-rational<I>
-abs(const rational<I>& r) {
+rational<I> abs(const rational<I>& r) {
     if (r < rational<I>(0))
         return -r;
 
@@ -193,8 +197,7 @@ rational<I> inv(const rational<I>& r) {
 
 /* Overload of <<, to make the rationals printable. */
 template<typename I>
-std::ostream&
-operator<<(std::ostream& os, const rational<I>& r) {
+std::ostream& operator<<(std::ostream& os, const rational<I>& r) {
     if (r.den() != 1)
         os << r.num() << "/" << r.den();
     else
